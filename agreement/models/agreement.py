@@ -3,7 +3,6 @@
 
 
 from odoo import api, fields, models
-from odoo.models import Constraint
 
 
 class Agreement(models.Model):
@@ -80,10 +79,10 @@ class Agreement(models.Model):
             rec.display_name = f"[{rec.code}] {rec.name}"
 
     _sql_constraints = [
-        Constraint(
+        (
+            "code_partner_company_unique",
             "unique(code, commercial_partner_id, company_id)",
             "This agreement code already exists for this commercial entity!",
-            name="code_partner_company_unique"
         )
     ]
 
