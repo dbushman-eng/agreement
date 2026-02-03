@@ -1,5 +1,5 @@
 <odoo>
-    <!-- Module category - kept for reference but no longer linked to groups in Odoo 19 -->
+    <!-- Module category - kept for reference -->
     <record id="module_agreement_legal_category" model="ir.module.category">
         <field name="name">Agreement</field>
         <field name="sequence">17</field>
@@ -24,9 +24,5 @@
     <record id="group_agreement_manager" model="res.groups">
         <field name="name">Agreement / Manager</field>
         <field name="implied_ids" eval="[(4, ref('group_agreement_user'))]" />
-        <field
-            name="users"
-            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
-        />
     </record>
 </odoo>
