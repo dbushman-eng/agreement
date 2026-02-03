@@ -1,4 +1,5 @@
 <odoo>
+    <!-- Module category - kept for reference but no longer linked to groups in Odoo 19 -->
     <record id="module_agreement_legal_category" model="ir.module.category">
         <field name="name">Agreement</field>
         <field name="sequence">17</field>
@@ -6,11 +7,7 @@
 
     <!-- Readonly group -->
     <record id="group_agreement_readonly" model="res.groups">
-        <field name="name">Read-Only Users</field>
-        <field
-            name="category_id"
-            ref="agreement_legal.module_agreement_legal_category"
-        />
+        <field name="name">Agreement / Read-Only Users</field>
         <field
             name="implied_ids"
             eval="[(4, ref('base.group_user')), (4, ref('agreement.group_use_agreement_type')), (4, ref('agreement.group_use_agreement_template'))]"
@@ -19,21 +16,13 @@
 
     <!-- User group -->
     <record id="group_agreement_user" model="res.groups">
-        <field name="name">User</field>
-        <field
-            name="category_id"
-            ref="agreement_legal.module_agreement_legal_category"
-        />
+        <field name="name">Agreement / User</field>
         <field name="implied_ids" eval="[(4, ref('group_agreement_readonly'))]" />
     </record>
 
     <!-- Manager group -->
     <record id="group_agreement_manager" model="res.groups">
-        <field name="name">Manager</field>
-        <field
-            name="category_id"
-            ref="agreement_legal.module_agreement_legal_category"
-        />
+        <field name="name">Agreement / Manager</field>
         <field name="implied_ids" eval="[(4, ref('group_agreement_user'))]" />
         <field
             name="users"
