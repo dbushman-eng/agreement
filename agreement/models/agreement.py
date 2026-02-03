@@ -78,13 +78,11 @@ class Agreement(models.Model):
         for rec in self:
             rec.display_name = f"[{rec.code}] {rec.name}"
 
-    _sql_constraints = [
-        (
-            "code_partner_company_unique",
-            "unique(code, commercial_partner_id, company_id)",
-            "This agreement code already exists for this commercial entity!",
-        )
-    ]
+    # Odoo 19 constraint format
+    _code_partner_company_unique = models.Constraint(
+        "UNIQUE(code, commercial_partner_id, company_id)",
+        "This agreement code already exists for this commercial entity!",
+    )
 
     def copy(self, default=None):
         """Always assign a value for code because is required"""
